@@ -6,6 +6,8 @@ import  { useState } from 'react'
 import * as yup from 'yup'
 import { useEffect } from 'react'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+import PizzaComplete from './Components/PizzaComplete'
 
 
 const url ='https://reqres.in/api/users'
@@ -46,6 +48,8 @@ const App = () => {
   const [orderErrors, setOrderErrors] = useState(initialOrderErrors)
   const [orderButtonEnabled, setOrderButtonEnabled] = useState(false)
   const [allOrders, setAllOrders] = useState([])
+
+  const history = useHistory()
 
   useEffect(() => {
 
@@ -103,6 +107,8 @@ const App = () => {
 
     event.preventDefault()
 
+    history.push('/pizza/complete')
+
     const newPizzaOrder = {
 
       name: pizzaOrder.name,
@@ -138,6 +144,9 @@ const App = () => {
     <>
       <h1>Lambda Eats</h1>
       <Switch>
+        <Route path='/pizza/complete'>
+          <PizzaComplete allOrders={allOrders}/>
+        </Route>
         <Route path='/pizza'>
           <Pizza allOrders={allOrders} onSubmit={onSubmit} orderErrors={orderErrors} orderButtonEnabled={orderButtonEnabled} updateCheckbox={updateCheckbox} updateForm={updateForm} pizzaOrder={pizzaOrder}/>
         </Route>

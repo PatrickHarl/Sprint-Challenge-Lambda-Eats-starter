@@ -7,7 +7,7 @@ function Pizza(props) {
 
     return(
 
-        <div cyDiv='cyTest'>
+        <div>
 
             {
                 allOrders.map(order => {

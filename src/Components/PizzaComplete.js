@@ -6,7 +6,7 @@ function PizzaComplete(props) {
 
 return(
 
-    <div>
+    <div cyDiv='cyTest'>
 
         <p>Congrats! Pizza is on its way!</p>
         <pre>
